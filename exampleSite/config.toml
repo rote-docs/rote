@@ -1,0 +1,18 @@
+baseURL = "https://example.org/"
+languageCode = "en-us"
+title = "Hugo UIDocs Theme"
+theme = "uidocs"
+pygmentsCodeFences = true
+pygmentsStyle = "monokailight"
+
+[params]
+primarybackgroundcolor = "#1e87f0"
+primarytextcolor = "#fff"
+
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
+
+[[menu.shortcuts]]
+name = "<i class='fa fa-external-link'></i> GitHub Repository"
+url = "https://github.com/idrum4316/uidocs"
+weight = 10
