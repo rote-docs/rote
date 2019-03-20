@@ -43,6 +43,12 @@ em {
     color: inherit;
 }
 
+/* Add some styles to make blockquotes stand out more */
+blockquote {
+    padding-left: 1em;
+    border-left: solid 3px #e5e5e5;
+}
+
 /*
  * Apply the uk-table styles to plain tables so they render right in the page 
  * content
