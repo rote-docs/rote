@@ -1,0 +1,113 @@
+{{ define "main" }}
+
+    <form action="" method="GET" class="uk-margin-bottom">
+        <div class="uk-inline uk-display-block">
+            <span class="uk-form-icon" uk-icon="icon: search"></span>
+            <input class="uk-input" name="q" id="query" placeholder="Search query...">
+        </div>
+    </form>
+
+    <div id="results">
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/elasticlunr/0.9.6/elasticlunr.min.js"></script>
+    <script type="text/javascript">
+
+        // Create the search index
+        var searchindex = elasticlunr(function () {
+            this.addField('description');
+            this.addField('title');
+            this.addField('content');
+            this.setRef('uri');
+        });
+
+        ////////////////////////////////////////////////////////////////////////
+        // FUNCTION DEFS ///////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////
+
+        // Get a URL query parameter by name
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        ////////////////////////////////////////////////////////////////////////
+        // END FUNCTION DEFS ///////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////
+
+        // Set the query input and set the input to match
+        var query = getParameterByName('q');
+        if (query !== null) {
+            document.getElementById('query').value = query;
+            
+            // Get the index
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '{{ .Site.BaseURL }}/index.json');
+            xhr.send(null);
+
+            xhr.onreadystatechange = function () {
+                var DONE = 4; // readyState 4 means the request is done.
+                var OK = 200; // status 200 is a successful return.
+
+                if (xhr.readyState === DONE) {
+                    if (xhr.status === OK) {
+                        var j = JSON.parse(xhr.responseText);
+                        j.forEach(function(item, index, array) {
+                            searchindex.addDoc(item);
+                        });
+                        var results = searchindex.search(query);
+
+                        // Create the regular expression
+                        var re = new RegExp(query, 'gi');
+
+                        var resultsdiv = document.getElementById('results');
+                        results.forEach(function(item, index, array) {
+
+                            // Skip tags
+                            if (item.doc.type === 'tags') {
+                                return;
+                            }
+
+                            // Find snippet
+                            var snippet = '';
+                            var resultIndex = item.doc.content.search(re);
+
+                            // Highlight matches
+                            if (resultIndex < 0) {
+                                snippet = item.doc.content.substring(0, 250);
+                            } else {
+                                var low = resultIndex - 125;
+                                if (low < 0) low = 0;
+                                var high = low + 250;
+                                snippet = item.doc.content.substring(low, high);
+                                if (low > 0) snippet = '...' + snippet;
+                                if (high < item.doc.content.length) snippet = snippet + '...';
+                                snippet = snippet.replace(re, '<mark>$&</mark>');
+                            }
+
+                            // Add the HTML for each match
+                            var tags = '';
+                            item.doc.tags.forEach(function(tag) {
+                                tags += '<span class="uk-label uk-label-default uk-margin-small-left">' + tag + '</span>';
+                            });
+                            resultsdiv.innerHTML += '<div class="uk-margin-medium"><p><span class="uk-text-lead"><a href="' + item.doc.uri + '">' + item.doc.title + '</a></span>' + tags + '<br>' + snippet + '...<br><a class="uk-text-small uk-text-muted" href="' + item.doc.uri + '"><span uk-icon="link"></span> ' + item.doc.uri + '</a></p></div>';
+
+                        });
+                        
+                    } else {
+                        console.log('Error: ' + xhr.status); // An error occurred during the request.
+                    }
+                }
+
+            };
+        }
+
+    </script>
+
+{{ end }}

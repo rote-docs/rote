@@ -1,0 +1,82 @@
+/* Set Fonts */
+html, .uk-h1, .uk-h2, .uk-h3, .uk-h4, .uk-h5, .uk-h6, h1, h2, h3, h4, h5, h6, .uk-logo, .uk-navbar-item {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Print rules */
+@media print
+{    
+
+    /* Add a class for making elements not print */
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+
+    /* Set the print page margins */
+    @page {
+        margin: 15mm 15mm 15mm 15mm;
+    }
+
+}
+
+/* Enable active style for sub menus */
+.uk-nav-default li.uk-active>a {
+    color: #333;
+}
+
+/* Add border to nav */
+.uk-nav ul {
+    border-left: solid 1px #e5e5e5;
+}
+
+/* Hide the first level of headings (h1) */
+#TableOfContents > ul > li {
+    list-style: none;
+}
+#TableOfContents > ul {
+    padding-left: 0;
+}
+
+/* Make <em> tags not red */
+em {
+    color: inherit;
+}
+
+/*
+ * Apply the uk-table styles to plain tables so they render right in the page 
+ * content
+ */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    margin-bottom: 20px;
+}
+tbody > tr {
+    border-top: 1px solid #e5e5e5;
+}
+th {
+    padding: 16px 12px;
+    text-align: left;
+    vertical-align: bottom;
+    font-size: 12px;
+    font-weight: normal;
+    color: #999;
+    text-transform: uppercase;
+}
+td {
+    padding: 16px 12px;
+    vertical-align: top;
+}
+
+/* Add a grey label */
+.uk-label-default {
+    background-color: #9e9e9e;
+    color: #fff;
+}
+
+/* Make the mark stand out a little more */
+mark {
+    background: #ffffb0;
+}

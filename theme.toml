@@ -1,0 +1,12 @@
+name = "Uidocs"
+license = "MIT"
+licenselink = "https://github.com/idrum4316/uidocs/blob/master/LICENSE"
+description = ""
+homepage = "https://github.com/idrum4316/uidocs"
+tags = []
+features = []
+min_version = "0.41"
+
+[author]
+  name = "Chris Brower"
+  homepage = "https://github.com/idrum4316"

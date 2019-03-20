@@ -1,0 +1,21 @@
+<ul class="uk-list uk-list-large">
+    {{ .Scratch.Set "pages" .Page.Pages }}
+
+    {{ if .Page.Sections }}
+        {{ .Scratch.Set "pages" (.Page.Pages | union .Page.Sections) }}
+    {{ end }}
+
+    {{ $pages := (.Scratch.Get "pages") }}
+
+    {{ template "children" dict "pages" $pages }}
+</ul>
+
+{{ define "children" }}
+    {{ range .pages }}
+        <li>
+            <span class="uk-text-large"><a href="{{ .URL }}">{{ .Title }}</a></span>
+            <br>
+            <span class="uk-text-meta">{{ .Description }}</span>
+        </li>
+    {{ end }}
+{{ end }}

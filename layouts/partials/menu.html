@@ -1,0 +1,56 @@
+{{ $currentNode := . }}
+
+<ul class="uk-nav uk-nav-default">
+    <li class="uk-nav-header">Navigation</li>
+    <li class="uk-nav-divider"></li>
+    <li class="{{ if .Page.IsHome }}uk-active{{ end }}">
+        <a href="{{ .Site.Home.URL }}">Home</a>
+    </li>
+
+    <!-- Generate a menu for each section -->
+    {{ range .Site.Home.Sections.ByWeight }}
+        {{ template "section-tree-nav" dict "sect" . "currentnode" $currentNode }}
+    {{ end }}
+
+    <li class="uk-nav-header">More Links</li>
+    <li class="uk-nav-divider"></li>
+    {{ with .Site.Menus.shortcuts }}
+        {{ range sort . "Weight" }}
+            <li>
+                <a href="{{ .URL | absLangURL }}">{{ safeHTML .Name }}</a>
+            </li>
+        {{ end }}
+    {{ end }}
+</ul>
+
+<!-- Templates -->
+{{ define "section-tree-nav" }}
+    {{ $currentNode := .currentnode }}
+
+    {{ with .sect }}
+        {{ $numberOfPages := (add (len .Pages) (len .Sections)) }}
+
+        <li class="{{ if eq .URL $currentNode.URL}}uk-active{{end}} {{ if ne $numberOfPages 0 }}uk-parent{{ end }}">
+            <a href="{{ .URL }}">{{ .Title }}</a>
+
+            {{ if ne $numberOfPages 0 }}
+                {{ .Scratch.Set "pages" .Pages }}
+                {{ if .Sections}}
+                    {{ .Scratch.Set "pages" (.Pages | union .Sections) }}
+                {{ end}}
+                {{ $pages := (.Scratch.Get "pages") }}
+
+                <!-- Render and children -->
+                <ul class="uk-nav-sub">
+                    {{ range $pages.ByWeight }}
+                        {{ template "section-tree-nav" dict "sect" . "currentnode" $currentNode }}
+                    {{ end }}
+                </ul>
+                <!-- End children -->
+
+            {{ end }}
+
+        </li>
+    {{ end }}
+
+{{ end }}
