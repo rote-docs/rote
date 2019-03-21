@@ -17,7 +17,10 @@
     {{ with .Site.Menus.shortcuts }}
         {{ range sort . "Weight" }}
             <li>
-                <a href="{{ .URL | absLangURL }}">{{ safeHTML .Name }}</a>
+                <a href="{{ .URL | absLangURL }}">
+                    {{ .Pre }}
+                    {{ .Name }}
+                </a>
             </li>
         {{ end }}
     {{ end }}
