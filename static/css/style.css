@@ -18,6 +18,11 @@ html, .uk-h1, .uk-h2, .uk-h3, .uk-h4, .uk-h5, .uk-h6, h1, h2, h3, h4, h5, h6, .u
         margin: 15mm 15mm 15mm 15mm;
     }
 
+    /* Horizontal scrolling is hard on paper, so wrap the text in code blocks */
+    pre {
+        white-space: pre-wrap;
+    }
+
 }
 
 /* Enable active style for sub menus */
