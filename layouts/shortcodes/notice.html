@@ -1,1 +1,1 @@
-<div {{ if len .Params | eq 1 }}class="uk-alert-{{ .Get 0 }}"{{ end }} uk-alert>{{ .Inner }}</div>
+<div {{ if len .Params | eq 1 }}class="uk-alert-{{ .Get 0 }}"{{ end }} uk-alert>{{ .Inner | markdownify }}</div>
