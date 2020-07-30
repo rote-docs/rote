@@ -18,7 +18,7 @@
         {{ range sort . "Weight" }}
             <li>
                 <a href="{{ .URL | absLangURL }}">
-                    {{ .Pre }}
+                    <span uk-icon="icon: link"></span>
                     {{ .Name }}
                 </a>
             </li>
