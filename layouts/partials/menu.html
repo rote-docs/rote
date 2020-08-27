@@ -4,7 +4,7 @@
     <li class="uk-nav-header">Navigation</li>
     <li class="uk-nav-divider"></li>
     <li class="{{ if .Page.IsHome }}uk-active{{ end }}">
-        <a href="{{ .Site.Home.URL }}">Home</a>
+        <a href="{{ .Site.Home.RelPermalink }}">Home</a>
     </li>
 
     <!-- Generate a menu for each section -->

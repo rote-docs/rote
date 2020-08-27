@@ -13,7 +13,7 @@
 {{ define "children" }}
     {{ range .pages }}
         <li>
-            <span class="uk-text-large"><a href="{{ .URL }}">{{ .Title }}</a></span>
+            <span class="uk-text-large"><a href="{{ .RelPermalink }}">{{ .Title }}</a></span>
             <br>
             <span class="uk-text-meta">{{ .Description }}</span>
         </li>
