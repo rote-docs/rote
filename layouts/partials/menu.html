@@ -1,8 +1,10 @@
 {{ $currentNode := . }}
 
-<ul class="uk-nav uk-nav-default">
+<ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
     <li class="uk-nav-header">Navigation</li>
     <li class="uk-nav-divider"></li>
+
+    <!-- Home Link -->
     <li class="{{ if .Page.IsHome }}uk-active{{ end }}">
         <a href="{{ .Site.Home.RelPermalink }}">Home</a>
     </li>
@@ -12,6 +14,7 @@
         {{ template "section-tree-nav" dict "sect" . "currentnode" $currentNode }}
     {{ end }}
 
+    <!-- Static menu items from config file -->
     <li class="uk-nav-header">More Links</li>
     <li class="uk-nav-divider"></li>
     {{ with .Site.Menus.shortcuts }}
@@ -26,34 +29,50 @@
     {{ end }}
 </ul>
 
-<!-- Templates -->
+<!-- Recursive template that handles nested or non-nested menu items -->
 {{ define "section-tree-nav" }}
     {{ $currentNode := .currentnode }}
 
     {{ with .sect }}
+
+        <!-- Get the number of pages in the node -->
         {{ $numberOfPages := (add (len .Pages) (len .Sections)) }}
 
-        <li class="{{ if eq .URL $currentNode.URL}}uk-active{{end}} {{ if ne $numberOfPages 0 }}uk-parent{{ end }}">
-            <a href="{{ .URL }}">{{ .Title }}</a>
+        {{ if eq $numberOfPages 0 }}
 
-            {{ if ne $numberOfPages 0 }}
+            <li class="{{ if eq .URL $currentNode.URL }}uk-active{{ end }}">
+                <a href="{{ .URL }}">{{ .Title }}</a>
+            </li>
+
+        {{ else }}
+
+            <li class="{{ if .IsAncestor $currentNode }}uk-open{{ end }} uk-parent">
+                <a href="#">{{ .Title }}</a>
+
+                <!-- Gather all of the sub pages/sections -->
                 {{ .Scratch.Set "pages" .Pages }}
                 {{ if .Sections}}
                     {{ .Scratch.Set "pages" (.Pages | union .Sections) }}
                 {{ end}}
                 {{ $pages := (.Scratch.Get "pages") }}
 
-                <!-- Render and children -->
-                <ul class="uk-nav-sub">
+                <!-- Render the children -->
+                <ul class="uk-nav-sub uk-nav-parent-icon" uk-nav>
+                    <li class="{{ if eq .URL $currentNode.URL }}uk-active{{ end }}">
+                        <a href="{{ .URL }}">Home</a>
+                    </li>
+
                     {{ range $pages.ByWeight }}
                         {{ template "section-tree-nav" dict "sect" . "currentnode" $currentNode }}
                     {{ end }}
                 </ul>
                 <!-- End children -->
 
-            {{ end }}
+            </li>
 
-        </li>
+        {{ end }}
+
+        
     {{ end }}
 
 {{ end }}
