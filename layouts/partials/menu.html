@@ -1,6 +1,6 @@
 {{ $currentNode := . }}
 
-<ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+<ul class="uk-nav-default uk-nav-parent-icon" uk-nav="multiple: true">
     <li class="uk-nav-header">Navigation</li>
     <li class="uk-nav-divider"></li>
 
@@ -57,7 +57,7 @@
                 {{ $pages := (.Scratch.Get "pages") }}
 
                 <!-- Render the children -->
-                <ul class="uk-nav-sub uk-nav-parent-icon" uk-nav>
+                <ul class="uk-nav-sub uk-nav-parent-icon" uk-nav="multiple: true">
                     {{ if eq .Site.Params.showlistpages true }}
                         <li class="{{ if eq .URL $currentNode.URL }}uk-active{{ end }}">
                             <a href="{{ .URL }}">Home</a>
