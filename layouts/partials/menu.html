@@ -58,9 +58,11 @@
 
                 <!-- Render the children -->
                 <ul class="uk-nav-sub uk-nav-parent-icon" uk-nav>
-                    <li class="{{ if eq .URL $currentNode.URL }}uk-active{{ end }}">
-                        <a href="{{ .URL }}">Home</a>
-                    </li>
+                    {{ if eq .Site.Params.showlistpages true }}
+                        <li class="{{ if eq .URL $currentNode.URL }}uk-active{{ end }}">
+                            <a href="{{ .URL }}">Home</a>
+                        </li>
+                    {{ end }}
 
                     {{ range $pages.ByWeight }}
                         {{ template "section-tree-nav" dict "sect" . "currentnode" $currentNode }}
