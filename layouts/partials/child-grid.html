@@ -7,14 +7,16 @@
 
     {{ $pages := (.Scratch.Get "pages") }}
 
-    {{ range $index, $page := $pages }}
-        <div>
-            <div class="uk-card uk-card-border uk-card-body">
-                <h3 class="uk-card-title">
-                    <a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a>
-                </h3>
-                <p>{{ $page.Description }}</p>
+    {{ range sort $pages "Weight" }}
+        {{ if ne .Params.hidden true }}
+            <div>
+                <div class="uk-card uk-card-border uk-card-body">
+                    <h3 class="uk-card-title">
+                        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                    </h3>
+                    <p>{{ .Description }}</p>
+                </div>
             </div>
-        </div>
+        {{ end }}
     {{ end }}
 </div>

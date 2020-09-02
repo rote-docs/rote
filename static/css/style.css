@@ -5,7 +5,7 @@ html, .uk-h1, .uk-h2, .uk-h3, .uk-h4, .uk-h5, .uk-h6, h1, h2, h3, h4, h5, h6, .u
 
 /* Print rules */
 @media print
-{    
+{
 
     /* Add a class for making elements not print */
     .no-print, .no-print *
@@ -25,9 +25,19 @@ html, .uk-h1, .uk-h2, .uk-h3, .uk-h4, .uk-h5, .uk-h6, h1, h2, h3, h4, h5, h6, .u
 
 }
 
+/* Search Styling */
+input#query {
+    border-radius: 0.25rem;
+}
+
 /* Enable active style for sub menus */
 .uk-nav-default li.uk-active>a {
     color: #333;
+}
+
+/* Make the active menu item more visible */
+.uk-nav-default li.uk-active>a, .uk-nav-default li.uk-active>a:hover {
+    font-weight: 500;
 }
 
 /* Add border to nav */
