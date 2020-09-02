@@ -1,8 +1,8 @@
-name = "Uidocs"
+name = "Rote"
 license = "MIT"
-licenselink = "https://github.com/idrum4316/uidocs/blob/master/LICENSE"
-description = ""
-homepage = "https://github.com/idrum4316/uidocs"
+licenselink = "https://github.com/rote-docs/rote/blob/master/LICENSE"
+description = "A documentation theme for Hugo"
+homepage = "https://github.com/rote-docs/rote"
 tags = []
 features = []
 min_version = "0.41"

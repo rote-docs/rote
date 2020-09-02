@@ -1,10 +1,10 @@
 +++
 title = "Home"
-description = "UIDocs Homepage"
+description = "Homepage"
 +++
 
-# UIDocs
-UIDocs is a simple Hugo theme designed to make it easy to create beautiful documentation.
+# Rote
+Rote is a simple Hugo theme designed to make it easy to create beautiful documentation.
 
 > This is a blockquote.
 
