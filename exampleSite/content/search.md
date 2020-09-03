@@ -1,5 +1,6 @@
 +++
-title = "Search Results"
+title = "Search"
+description = "Search this website"
 layout = "search"
 
 [sitemap]
