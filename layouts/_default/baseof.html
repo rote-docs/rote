@@ -12,6 +12,7 @@
         <!-- Stylesheets -->
         <link rel="stylesheet" href="{{ .Site.BaseURL }}/lib/uikit/css/uikit.min.css" />
         <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/style.css" />
+        <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/print.css" />
 
         <style type="text/css">
 
@@ -103,7 +104,7 @@
 
                     <!-- Main Content -->
                     <div class="uk-width-expand">
-                        <div>
+                        <div id="main-content">
                             <div class="uk-container uk-container-small">
 
                                 {{ block "main" . }}{{ end }}

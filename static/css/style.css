@@ -3,28 +3,6 @@ html, .uk-h1, .uk-h2, .uk-h3, .uk-h4, .uk-h5, .uk-h6, h1, h2, h3, h4, h5, h6, .u
     font-family: ProximaNova,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 }
 
-/* Print rules */
-@media print
-{
-
-    /* Add a class for making elements not print */
-    .no-print, .no-print *
-    {
-        display: none !important;
-    }
-
-    /* Set the print page margins */
-    @page {
-        margin: 15mm 15mm 15mm 15mm;
-    }
-
-    /* Horizontal scrolling is hard on paper, so wrap the text in code blocks */
-    pre {
-        white-space: pre-wrap;
-    }
-
-}
-
 /* Search Styling */
 input#query {
     border-radius: 0.25rem;
@@ -121,4 +99,9 @@ mark {
 }
 .uk-card > p {
     margin-top: 0.5rem;
+}
+
+/* Code Block Styles */
+#main-content pre {
+    max-height: 80vh; /* Prevent huge code blocks from being hard to scroll past */
 }

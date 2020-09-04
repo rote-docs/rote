@@ -1,0 +1,22 @@
+/* Print rules */
+@media print
+{
+
+    /* Add a class for making elements not print */
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+
+    /* Set the print page margins */
+    @page {
+        margin: 15mm 15mm 15mm 15mm;
+    }
+
+    /* Scrolling is hard on paper, so wrap the text in code blocks */
+    #main-content pre {
+        white-space: pre-wrap;
+        max-height: none;
+    }
+
+}

@@ -4,7 +4,7 @@ mermaid.initialize({startOnLoad:true});
 // MathJax Configuration
 MathJax = {
   svg: {
-    displayAlign: 'left'
+    displayAlign: 'center'
   }
 };
 
