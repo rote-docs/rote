@@ -105,3 +105,20 @@ mark {
 #main-content pre {
     max-height: 80vh; /* Prevent huge code blocks from being hard to scroll past */
 }
+
+/* Add an xs set of margin classes */
+.uk-margin-xs {
+    margin: 5px !important;
+}
+.uk-margin-xs-right {
+    margin-right: 5px !important;
+}
+.uk-margin-xs-left {
+    margin-left: 5px !important;
+}
+.uk-margin-xs-top {
+    margin-top: 5px !important;
+}
+.uk-margin-xs-bottom {
+    margin-bottom: 5px !important;
+}
