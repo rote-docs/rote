@@ -122,3 +122,14 @@ mark {
 .uk-margin-xs-bottom {
     margin-bottom: 5px !important;
 }
+
+/* Table of Contents Styles */
+#toc .is-active-link {
+    font-weight: 500;
+}
+#toc .uk-nav ul {
+    border: none;
+}
+#toc .uk-nav .uk-nav {
+    margin-left: 0.5rem;
+}

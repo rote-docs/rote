@@ -15,3 +15,13 @@ MathJax = {
   script.async = true;
   document.head.appendChild(script);
 })();
+
+tocbot.init({
+  tocSelector: '#toc',
+  contentSelector: '#main-content',
+  headingSelector: 'h1, h2, h3',
+  hasInnerContainers: true,
+  listClass: 'uk-nav',
+  extraListClasses: 'uk-nav-default',
+  orderedList: false
+});

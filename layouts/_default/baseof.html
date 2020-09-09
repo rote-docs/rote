@@ -22,7 +22,7 @@
                     background: {{ .Site.Params.primarybackgroundcolor }};
                 }
 
-                .uk-nav-default li.uk-active>a, .uk-nav-default li.uk-active>a:hover {
+                .uk-nav-default li.uk-active>a, .uk-nav-default li.uk-active>a:hover, #toc .is-active-link {
                     color: {{ .Site.Params.primarybackgroundcolor }} !important;
                 }
             {{ end }}
@@ -113,6 +113,15 @@
                         </div>
                     </div>
 
+                    <!-- Right Sidebar -->
+                    <div class="uk-width-medium uk-visible@m no-print">
+                        <div style="position: sticky; top: 25px;">
+                            <div class="uk-container uk-container-expand">
+                                <div id="toc"></div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -132,6 +141,7 @@
         </div>
 
         <script src="{{ "lib/mermaid/mermaid.min.js" | relURL }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.0/tocbot.min.js"></script>
         <script src="{{ "js/rote.js" | relURL }}"></script>
     </body>
 </html>
