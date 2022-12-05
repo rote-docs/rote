@@ -73,7 +73,7 @@
                         <!-- Navbar Right -->
                         <div class="uk-navbar-right">
                             <div class="uk-navbar-item uk-visible@s">
-                                <form action="{{ .Site.BaseURL }}/search/" method="GET">
+                                <form action="{{ with .Site.GetPage "/search.md" }}{{ .Permalink }}{{ end }}" method="GET">
                                     <div class="uk-inline">
                                         <span class="uk-form-icon" uk-icon="icon: search"></span>
                                         <input id="query" class="uk-input uk-form-width-medium" name="q" type="text" placeholder="Search">
