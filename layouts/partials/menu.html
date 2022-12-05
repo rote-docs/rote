@@ -45,14 +45,14 @@
 
             {{ if eq $numberOfPages 0 }}
 
-                <li class="{{ if eq .URL $currentNode.URL }}uk-active{{ end }}">
-                    <a href="{{ .URL }}">{{ .Title }}</a>
+                <li class="{{ if eq .Permalink $currentNode.Permalink }}uk-active{{ end }}">
+                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
                 </li>
 
             {{ else }}
 
                 <li class="{{ if .IsAncestor $currentNode }}uk-open{{ end }} uk-parent">
-                    <a href="#">{{ .Title }}</a>
+                    <a href="#">{{ .Title }} <span uk-nav-parent-icon></span></a>
 
                     <!-- Gather all of the sub pages/sections -->
                     {{ .Scratch.Set "pages" .Pages }}
@@ -64,8 +64,8 @@
                     <!-- Render the children -->
                     <ul class="uk-nav-sub uk-nav-parent-icon" uk-nav="multiple: true">
                         {{ if eq .Site.Params.showlistpages true }}
-                            <li class="{{ if eq .URL $currentNode.URL }}uk-active{{ end }}">
-                                <a href="{{ .URL }}">Home</a>
+                                <li class="{{ if eq .Permalink $currentNode.Permalink }}uk-active{{ end }}">
+                                <a href="{{ .RelPermalink }}">Home</a>
                             </li>
                         {{ end }}
 
