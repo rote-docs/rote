@@ -2,8 +2,12 @@ baseURL = "https://example.org/"
 languageCode = "en-us"
 title = "Rote Docs"
 theme = "rote"
-pygmentsCodeFences = true
-pygmentsStyle = "monokailight"
+
+[params]
+primaryBackgroundColor = "#7649bd"
+primaryTextColor = "#fff"
+showListPages = false
+themeVariant = "dark" # 'light' or 'dark'
 
 [outputs]
 home = [ "HTML", "RSS", "JSON"]

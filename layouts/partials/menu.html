@@ -63,7 +63,7 @@
 
                     <!-- Render the children -->
                     <ul class="uk-nav-sub uk-nav-parent-icon" uk-nav="multiple: true">
-                        {{ if eq .Site.Params.showlistpages true }}
+                        {{ if eq .Site.Params.showListPages true }}
                                 <li class="{{ if eq .Permalink $currentNode.Permalink }}uk-active{{ end }}">
                                 <a href="{{ .RelPermalink }}">Home</a>
                             </li>

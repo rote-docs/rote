@@ -3,6 +3,11 @@ html, .uk-h1, .uk-h2, .uk-h3, .uk-h4, .uk-h5, .uk-h6, h1, h2, h3, h4, h5, h6, .u
     font-family: ProximaNova,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 }
 
+/* Dark mode color fixes */
+.uk-light .uk-background-muted {
+    background-color: #2a2a2a;
+}
+
 /* Search Styling */
 input#query {
     border-radius: 0.25rem;
@@ -21,6 +26,9 @@ input#query {
 /* Add border to nav */
 .uk-nav ul {
     border-left: solid 1px #e5e5e5;
+}
+.uk-light .uk-nav ul {
+    border-left: solid 1px rgba(255,255,255,.2);
 }
 
 /* Hide the first level of headings (h1) */
@@ -87,10 +95,13 @@ mark {
     border-bottom: solid 1px #e5e5e5;
 }
 
+/* Card Styles */
 .uk-card-border {
     border: solid 2px #e8e8e8;
-    border-radius: 0.5rem;
     padding: 1.5rem;
+}
+.uk-light .uk-card-border {
+    border: solid 2px #444;
 }
 .uk-card-title {
     font-size: 1.25rem;
@@ -104,6 +115,14 @@ mark {
 /* Code Block Styles */
 #main-content pre {
     max-height: 80vh; /* Prevent huge code blocks from being hard to scroll past */
+    border: none;
+    margin: 0;
+}
+div.highlight {
+    margin-bottom: 20px;
+}
+div.highlight tbody > tr {
+    border: none;
 }
 
 /* Add an xs set of margin classes */
@@ -121,4 +140,26 @@ mark {
 }
 .uk-margin-xs-bottom {
     margin-bottom: 5px !important;
+}
+
+/*Dark theme alerts */
+.uk-light .uk-alert {
+    background: #666;
+    color: #f8f8f8;
+}
+.uk-light .uk-alert-primary {
+    color: #d8eafc;
+    background: #1e87f0;
+}
+.uk-light .uk-alert-success {
+    color: #edfbf6;
+    background: #019960;
+}
+.uk-light .uk-alert-warning {
+    color: #fff6ee;
+    background: #c47539;
+}
+.uk-light .uk-alert-danger {
+    color: #fef4f6;
+    background: #a6223b;
 }
